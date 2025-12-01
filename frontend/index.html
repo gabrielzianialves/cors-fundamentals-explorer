@@ -17,16 +17,12 @@
     async function fazerRequisicao() {
         resultadoElement.textContent = 'Carregando...';
         try {
-            // Requisição Fetch para a origem cruzada
             const response = await fetch(API_URL);
 
-            // Se o CORS tivesse permitido, o código continuaria aqui.
             const data = await response.json();
             resultadoElement.textContent = JSON.stringify(data, null, 2);
 
         } catch (error) {
-            // IMPORTANTE: o erro de CORS NÃO é capturado pelo try...catch.
-            // O navegador apenas o registra no CONSOLE.
             resultadoElement.textContent = 'Erro de requisição. Cheque o console do navegador!';
             console.error("Erro na requisição (verifique o erro de CORS):", error);
         }
